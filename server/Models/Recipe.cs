@@ -1,6 +1,6 @@
 namespace AllSpice.Models;
 
-public class Recipes : IdStuff
+public class Recipe : IdStuff
 {
     public string Title { get; set; }
     public string Instructions { get; set; }

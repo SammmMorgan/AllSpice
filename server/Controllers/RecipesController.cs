@@ -5,14 +5,14 @@ namespace AllSpice.Controllers;
 
 public class RecipeController : ControllerBase
 {
-    private readonly RecipeService _recipeService;
+    private readonly RecipesService _recipesService;
     private readonly Auth0Provider _auth0Provider;
 
 
-    public RecipeController(RecipeService recipeService, Auth0Provider auth0Provider)
+    public RecipeController(RecipesService recipesService, Auth0Provider auth0Provider)
     {
         _auth0Provider = auth0Provider;
-        _recipeService = recipeService;
+        _recipesService = recipesService;
     }
 
 
@@ -24,8 +24,8 @@ public class RecipeController : ControllerBase
         {
             Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
             recipeData.CreatorId = userInfo.Id;
-            Recipe recipe = _recipeService.CreateRecipe(recipeData);
-            return Ok(recipe);
+            // Recipe recipe = _recipesService.CreateRecipe(recipeData);
+            return Ok();
         }
         catch (System.Exception)
         {
@@ -38,16 +38,16 @@ public class RecipeController : ControllerBase
 
 
 
-    public ActionResult<List<string>> GetAllRecipes()
-    {
-        try
-        {
+    // public ActionResult<List<string>> GetAllRecipes()
+    // {
+    //     try
+    //     {
 
-        }
-        catch (System.Exception)
-        {
+    //     }
+    //     catch (System.Exception)
+    //     {
 
-            throw;
-        }
-    }
+    //         throw;
+    //     }
+    // }
 }
